@@ -1,0 +1,57 @@
+{
+  "common": {
+    "back": "بازگشت",
+    "showPassword": "نمایش رمز عبور",
+    "hidePassword": "پنهان کردن رمز عبور",
+    "orLoginWith": "یا وارد شوید با",
+    "loginWithGoogle": "ورود با گوگل"
+  },
+
+  "validation": {
+    "fullNameMin": "حداقل ۲ کاراکتر وارد کنید",
+    "emailInvalid": "آدرس ایمیل معتبر نیست",
+    "passwordMin": "رمز عبور باید حداقل ۸ کاراکتر باشد",
+    "passwordsMismatch": "رمز عبور و تکرار آن یکسان نیستند"
+  },
+
+  "login": {
+    "title": "ورود",
+    "subtitle": "وارد حساب کاربری خود شوید",
+    "emailPlaceholder": "آدرس ایمیل",
+    "passwordPlaceholder": "رمز عبور",
+    "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
+    "submitButton": "ورود",
+    "guestButton": "ورود به عنوان مهمان",
+    "noAccount": "حساب کاربری ندارید؟",
+    "signUpLink": "ثبت‌نام کنید"
+  },
+
+  "register": {
+    "title": "ثبت‌نام",
+    "subtitle": "حساب کاربری جدید بسازید",
+    "fullNamePlaceholder": "نام و نام خانوادگی",
+    "emailPlaceholder": "آدرس ایمیل",
+    "passwordPlaceholder": "رمز عبور",
+    "confirmPasswordPlaceholder": "تکرار رمز عبور",
+    "submitButton": "ثبت‌نام",
+    "alreadyHaveAccount": "قبلاً ثبت‌نام کرده‌اید؟",
+    "signInLink": "وارد شوید"
+  },
+
+  "forgotPassword": {
+    "title": "بازیابی رمز عبور",
+    "subtitle": "لطفاً آدرس ایمیل خود را وارد کنید تا لینک بازیابی برایتان ارسال شود",
+    "emailPlaceholder": "آدرس ایمیل",
+    "submitButton": "ارسال لینک",
+    "sentButton": "لینک ارسال شد!"
+  },
+
+  "verification": {
+    "title": "تأیید کد",
+    "subtitle": "کد تأیید ارسال شده به شماره",
+    "confirmButton": "تأیید",
+    "resendCode": "ارسال مجدد کد",
+    "resendIn": "ارسال مجدد تا {seconds} ثانیه دیگر",
+    "invalidCode": "کد وارد شده صحیح نیست. لطفاً دوباره تلاش کنید."
+  }
+}

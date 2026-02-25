@@ -1,0 +1,57 @@
+{
+  "common": {
+    "back": "Back",
+    "showPassword": "Show Password",
+    "hidePassword": "Hide Password",
+    "orLoginWith": "Or login with",
+    "loginWithGoogle": "Login with Google"
+  },
+
+  "validation": {
+    "fullNameMin": "Enter at least 2 characters",
+    "emailInvalid": "Invalid email address",
+    "passwordMin": "Password must be at least 8 characters",
+    "passwordsMismatch": "Password and confirmation do not match"
+  },
+
+  "login": {
+    "title": "Login",
+    "subtitle": "Log into your account",
+    "emailPlaceholder": "Email Address",
+    "passwordPlaceholder": "Password",
+    "forgotPassword": "Forgot your password?",
+    "submitButton": "Sign In",
+    "guestButton": "Login as Guest",
+    "noAccount": "Don't have an account?",
+    "signUpLink": "Sign up"
+  },
+
+  "register": {
+    "title": "Sign Up",
+    "subtitle": "Create a new account",
+    "fullNamePlaceholder": "Full Name",
+    "emailPlaceholder": "Email Address",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm Password",
+    "submitButton": "Sign Up",
+    "alreadyHaveAccount": "Already have an account?",
+    "signInLink": "Sign In"
+  },
+
+  "forgotPassword": {
+    "title": "Password Recovery",
+    "subtitle": "Please enter your email address to receive the recovery link",
+    "emailPlaceholder": "Email Address",
+    "submitButton": "Send Link",
+    "sentButton": "Link Sent!"
+  },
+
+  "verification": {
+    "title": "Verification Code",
+    "subtitle": "The verification code sent to the number",
+    "confirmButton": "Confirm",
+    "resendCode": "Resend Code",
+    "resendIn": "Resend in {seconds} seconds",
+    "invalidCode": "The code entered is incorrect. Please try again."
+  }
+}
