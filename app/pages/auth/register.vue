@@ -56,20 +56,19 @@ const errorMessage = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-8">
+  <div class="flex flex-col gap-4">
     <!-- ── LOGO ───────────────────────────────────────── -->
     <div class="flex flex-col items-center gap-1 mb-5">
-      <span class="text-5xl font-black tracking-[0.25em] text-gray-900 mt-2">
+      <span class="text-5xl text-gray-900 mt-2 font-medium">
         LOGO
       </span>
-      <div class="w-8 h-0.5 bg-[#9B1B3A] rounded-full mt-2" />
     </div>
     <!-- ── HEADING ────────────────────────────────────── -->
     <div class="text-start">
-      <h1 class="text-2xl font-bold text-gray-900 tracking-tight">
+      <h1 class="text-2xl font-medium  text-gray-900 tracking-tight">
         {{ t('register.title') }}
       </h1>
-      <p class="text-sm text-gray-500 mt-1">
+      <p class="text-sm text-gray-500 mt-1 font-normal">
         {{ t('register.subtitle') }}
       </p>
     </div>
@@ -79,7 +78,7 @@ const errorMessage = computed(() => {
       icon="i-heroicons-exclamation-circle" />
 
     <!-- ── FORM ───────────────────────────────────────── -->
-    <form class="flex flex-col gap-2" novalidate @submit.prevent="onSubmit">
+    <form class="flex flex-col gap-3" novalidate @submit.prevent="onSubmit">
 
       <!-- Full Name -->
       <UFormField :error="errors.fullName">
@@ -155,16 +154,19 @@ const errorMessage = computed(() => {
     </form>
 
     <!-- ── DIVIDER ─────────────────────────────────────── -->
-    <div class="flex items-center gap-3">
-      <div class="flex-1 h-px bg-gray-100" />
-      <span class="text-xs text-gray-400 whitespace-nowrap font-medium">
+    <div class="flex items-center gap-3 justify-center w-full">
+      <div class="w-2.5 h-px bg-gray-500"></div>
+
+      <span class="text-[16px] text-gray-900 whitespace-nowrap font-medium">
         {{ t('common.orLoginWith') }}
       </span>
-      <div class="flex-1 h-px bg-gray-100" />
+
+      <div class="w-2.5 h-px bg-gray-500"></div>
     </div>
 
     <!-- ── GOOGLE ──────────────────────────────────────── -->
-    <UButton type="button" color="neutral" variant="ghost" size="lg" block class="">
+    <UButton type="button" color="neutral" variant="ghost" size="lg" block
+      :style="{ boxShadow: '15px 0px 30px 0px #D3D4E240' }">
       <template #leading>
         <svg class="size-5 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path fill="#4285F4"

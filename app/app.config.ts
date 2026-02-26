@@ -37,13 +37,13 @@ export default defineAppConfig({
       slots: {
         base: [
           'cursor-pointer',
-          'rounded-xl font-semibold tracking-widest flex items-center justify-center relative font-semibold',
+          'rounded-[15px] font-semibold tracking-widest flex items-center justify-center relative font-normal',
           'disabled:cursor-not-allowed aria-disabled:cursor-not-allowed',
           'disabled:opacity-75 aria-disabled:opacity-75',
           'transition-colors duration-200',
           'focus:outline-none',
         ].join(' '),
-        label: 'truncate tracking-widest ',
+        label: 'truncate tracking-widest',
         // ✅ Add these two new slots:
         leadingIcon: '',
         trailingIcon: '',
@@ -66,27 +66,27 @@ export default defineAppConfig({
         },
         size: {
           xs: {
-            base: 'px-2 py-1 text-xs gap-1.5',
+            base: 'px-2 py-1 text-xs gap-1.5 text-xs',
             leadingIcon: 'size-4',
             trailingIcon: 'size-4',
           },
           sm: {
-            base: 'px-2.5 py-1.5 text-xs gap-1.5',
+            base: 'px-2.5 py-1.5 text-xs gap-1.5 text-sm',
             leadingIcon: 'size-4',
             trailingIcon: 'size-4',
           },
           md: {
-            base: 'px-2.5 py-1.5 text-sm gap-1.5',
+            base: 'px-2.5 py-1.5 text-sm gap-1.5 ',
             leadingIcon: 'size-5',
             trailingIcon: 'size-5',
           },
           lg: {
-            base: 'px-4 py-3.5 text-sm gap-2',
+            base: 'px-4 py-3.5 text-sm gap-2 text-base',
             leadingIcon: 'size-5',
             trailingIcon: 'size-5',
           },
           xl: {
-            base: 'px-6 py-4 text-base gap-2',
+            base: 'px-6 py-4 text-base gap-2 text-[15px]',
             leadingIcon: 'size-6',
             trailingIcon: 'size-6',
           },
