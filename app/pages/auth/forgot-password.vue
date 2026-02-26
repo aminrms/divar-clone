@@ -89,7 +89,7 @@ const onSubmit = handleSubmit(async (values) => {
       </UFormField>
 
       <!-- 40px space before submit -->
-      <div class="mt-8" />
+      <div class="mt-6" />
 
       <!-- Send Link -->
       <AppButton

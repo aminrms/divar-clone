@@ -5,18 +5,12 @@ const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 
+const username = route?.query?.username as string
 const maskedPhone = '+88 913 123 4567'
 
 // ─── OTP State ────────────────────────────────────────────────────────────────
 const digits = ref<string[]>(['', '', '', ''])
 const inputRefs = ref<HTMLInputElement[]>([])
-
-function setRef(el: any, index: number) {
-  if (!el) return
-  // UInput is a component — resolve the inner native <input>
-  const native = el.$el?.querySelector('input') ?? el
-  inputRefs.value[index] = native
-}
 
 const isLoading = ref(false)
 const errorMsg = ref('')
@@ -26,12 +20,15 @@ function onInput(index: number, event: Event) {
   const val = (event.target as HTMLInputElement).value
   digits.value[index] = val.slice(-1)
   errorMsg.value = ''
-  if (val && index < 3) nextTick(() => inputRefs.value[index + 1]?.focus())
+  if (val && index < 3) {
+    nextTick(() => inputRefs.value[index + 1]?.focus())
+  }
 }
 
 function onKeydown(index: number, event: KeyboardEvent) {
-  if (event.key === 'Backspace' && !digits.value[index] && index > 0)
+  if (event.key === 'Backspace' && !digits.value[index] && index > 0) {
     nextTick(() => inputRefs.value[index - 1]?.focus())
+  }
 }
 
 function onPaste(event: ClipboardEvent) {
@@ -49,22 +46,29 @@ const resendSeconds = ref(30)
 const canResend = ref(false)
 let timer: ReturnType<typeof setInterval>
 
-function startTimer() {
-  resendSeconds.value = 30
-  canResend.value = false
+onMounted(() => {
+  inputRefs.value[0]?.focus()
   timer = setInterval(() => {
-    if (resendSeconds.value > 0) resendSeconds.value--
-    else { canResend.value = true; clearInterval(timer) }
+    if (resendSeconds.value > 0) {
+      resendSeconds.value--
+    } else {
+      canResend.value = true
+      clearInterval(timer)
+    }
   }, 1000)
-}
+})
 
-onMounted(() => { nextTick(() => inputRefs.value[0]?.focus()); startTimer() })
 onUnmounted(() => clearInterval(timer))
 
 function resendCode() {
   if (!canResend.value) return
+  resendSeconds.value = 30
+  canResend.value = false
   digits.value = ['', '', '', '']
-  startTimer()
+  timer = setInterval(() => {
+    if (resendSeconds.value > 0) resendSeconds.value--
+    else { canResend.value = true; clearInterval(timer) }
+  }, 1000)
   // TODO: call resend API
 }
 
@@ -91,16 +95,9 @@ async function onConfirm() {
 
 <template>
   <div class="flex flex-col gap-4">
-
     <!-- ── BACK BUTTON ────────────────────────────────── -->
-    <UButton
-      color="neutral"
-      variant="ghost"
-      size="sm"
-      icon="i-heroicons-arrow-left"
-      class="-mt-4 self-start"
-      @click="router.back()"
-    >
+    <UButton color="neutral" variant="ghost" size="sm" icon="i-heroicons-arrow-left" class="-mt-4 self-start"
+      @click="router.back()">
       {{ t('common.back') }}
     </UButton>
 
@@ -109,82 +106,48 @@ async function onConfirm() {
       <h1 class="text-2xl font-normal text-gray-900">
         {{ t('verification.title') }}
       </h1>
-      <p class="text-sm text-gray-474 mt-1 leading-relaxed">
+      <p class="text-sm text-gray-500 mt-1 font-normal">
         {{ t('verification.subtitle') }} :
-        <span class="font-semibold text-gray-474">{{ maskedPhone }}</span>
       </p>
+      <span class="font-semibold text-gray-474">{{ maskedPhone }}</span>
     </div>
 
     <!-- ── API ERROR ──────────────────────────────────── -->
-    <UAlert
-      v-if="errorMsg"
-      color="error"
-      variant="soft"
-      :description="errorMsg"
-      icon="i-heroicons-exclamation-circle"
-    />
+    <UAlert v-if="errorMsg" color="error" variant="soft" :description="errorMsg"
+      icon="i-heroicons-exclamation-circle" />
 
     <!-- ── OTP INPUTS ─────────────────────────────────── -->
     <div class="flex gap-3 mt-2" @paste.prevent="onPaste">
-      <UInput
-        v-for="(_, index) in digits"
-        :key="index"
-        :ref="(el) => setRef(el, index)"
-        v-model="digits[index]"
-        type="text"
-        inputmode="numeric"
-        maxlength="1"
-        :invalid="!!errorMsg"
-        :ui="{
-          base: 'pl-15 text-center text-xl font-bold h-14',
-          leading: 'ps-0',
-        }"
-        @input="onInput(index, $event)"
-        @keydown="onKeydown(index, $event)"
-      >
-        <template #leading>
-          <UButton
-            class="flex items-center justify-center w-12 h-full rounded-r-none self-stretch"
-            :ui="{ base: ['rounded-xl'] }"
-          >
-            <span class="text-white text-lg font-bold">{{ index + 1 }}</span>
-          </UButton>
-        </template>
-      </UInput>
+      <input v-for="(_, index) in digits" :key="index"
+        :ref="(el) => { if (el) inputRefs[index] = el as HTMLInputElement }" v-model="digits[index]" type="text"
+        inputmode="numeric" maxlength="1"
+        class="w-full h-14 text-center text-xl font-bold rounded-xl border-2 outline-none transition-all bg-white text-gray-900 focus:border-primary focus:ring-1 focus:ring-primary"
+        :class="[
+          digits[index] ? 'border-primary text-primary' : 'border-gray-200',
+        ]" @input="onInput(index, $event)" @keydown="onKeydown(index, $event)" />
     </div>
 
     <!-- ── RESEND ─────────────────────────────────────── -->
-    <UButton
-      color="primary"
-      :variant="canResend ? 'link' : 'ghost'"
-      size="sm"
-      :disabled="!canResend"
-      @click="resendCode"
-    >
-      {{
-        canResend
-          ? t('verification.resendCode')
-          : t('verification.resendIn', { seconds: resendSeconds })
-      }}
-    </UButton>
+    <div>
+      <UButton color="primary" :variant="canResend ? 'link' : 'ghost'" size="sm" :disabled="!canResend"
+        @click="resendCode">
+        {{
+          canResend
+            ? t('verification.resendCode')
+            : t('verification.resendIn', { seconds: resendSeconds })
+        }}
+      </UButton>
+    </div>
 
-    <!-- 40px space before confirm button -->
-    <div class="mt-8" />
-    <!-- ── CONFIRM BUTTON ─────────────────────────────── -->
-    <AppButton
-      type="button"
-      color="primary"
-      variant="solid"
-      size="xl"
-      block
-      :loading="isLoading"
-      :disabled="!isComplete || isLoading"
-      :trailing-icon="isLoading ? undefined : 'i-heroicons-arrow-right-20-solid'"
-      class="uppercase"
-      @click="onConfirm"
-    >
+    <div class="mt-6" />
+
+    <!-- ── CONFIRM BUTTON ──────────────────────────────── -->
+    <UButton type="button" color="primary" variant="solid" size="xl" block :loading="isLoading"
+      :disabled="!isComplete || isLoading" :trailing-icon="isLoading ? undefined : 'i-heroicons-arrow-right-20-solid'"
+      :ui="{ trailingIcon: 'w-5 h-5 rounded-full text-white flex items-center justify-center', base: ['uppercase'] }"
+      @click="onConfirm">
       {{ t('verification.confirmButton') }}
-    </AppButton>
+    </UButton>
 
   </div>
 </template>
