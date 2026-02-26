@@ -39,8 +39,8 @@
   },
 
   "forgotPassword": {
-    "title": "Password Recovery",
-    "subtitle": "Please enter your email address to receive the recovery link",
+    "title": "Reset Password",
+    "subtitle": "Please enter your email address to request a password reset",
     "emailPlaceholder": "Email Address",
     "submitButton": "Send Link",
     "sentButton": "Link Sent!"

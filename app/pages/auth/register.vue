@@ -77,7 +77,7 @@ const errorMessage = computed(() => {
     />
 
     <!-- ── FORM ───────────────────────────────────────── -->
-    <form class="flex flex-col gap-4" novalidate @submit.prevent="onSubmit">
+    <form class="flex flex-col gap-5" novalidate @submit.prevent="onSubmit">
 
       <!-- Full Name -->
       <UFormField :error="errors.fullName">
@@ -189,6 +189,7 @@ const errorMessage = computed(() => {
         </UInput>
       </UFormField>
 
+      <div class="mt-2"/>
       <!-- Sign Up -->
       <AppButton
         type="submit"
