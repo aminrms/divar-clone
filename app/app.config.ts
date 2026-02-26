@@ -1,10 +1,13 @@
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: '#9B1B3A',
-      secondary: '#ffffff',
-      text: '#333333',
-      background: '#ffffff',
+      primary: 'rose',
+      secondary: 'pink',
+      success: 'green',
+      info: 'blue',
+      warning: 'amber',
+      error: 'rose',
+      neutral: 'zinc'
     },
     input: {
       slots: {
@@ -37,14 +40,13 @@ export default defineAppConfig({
       slots: {
         base: [
           'cursor-pointer',
-          'rounded-[15px] font-semibold tracking-widest flex items-center justify-center relative font-normal',
+          'rounded-[15px] font-semibold flex items-center justify-center relative font-normal',
           'disabled:cursor-not-allowed aria-disabled:cursor-not-allowed',
           'disabled:opacity-75 aria-disabled:opacity-75',
           'transition-colors duration-200',
           'focus:outline-none',
         ].join(' '),
-        label: 'truncate tracking-widest',
-        // ✅ Add these two new slots:
+        label: '',
         leadingIcon: '',
         trailingIcon: '',
       },
@@ -119,27 +121,66 @@ export default defineAppConfig({
         {
           color: 'primary',
           variant: 'solid',
-          class: 'bg-[#9B1B3A] text-white hover:bg-[#7d1530] active:bg-[#6b1228] disabled:bg-[#9B1B3A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9B1B3A]',
+          class: `
+    bg-primary-900
+    text-white
+    hover:bg-primary-800
+    active:bg-primary-700
+    disabled:bg-primary-900
+    focus-visible:outline-2
+    focus-visible:outline-offset-2
+    focus-visible:outline-primary-900
+  `,
         },
         {
           color: 'primary',
           variant: 'outline',
-          class: 'ring ring-inset ring-[#9B1B3A] text-[#9B1B3A] hover:bg-[#9B1B3A]/10 active:bg-[#9B1B3A]/10 disabled:bg-transparent focus-visible:ring-2 focus-visible:ring-[#9B1B3A]',
+          class: `
+    ring
+    ring-inset
+    ring-primary-900
+    text-primary-900
+    hover:bg-primary-50
+    active:bg-primary-100
+    disabled:bg-transparent
+    focus-visible:ring-2
+    focus-visible:ring-primary-900
+  `,
         },
         {
           color: 'primary',
           variant: 'ghost',
-          class: 'text-[#9B1B3A] hover:bg-[#9B1B3A]/10 active:bg-[#9B1B3A]/10 disabled:bg-transparent focus-visible:bg-[#9B1B3A]/10',
+          class: `
+    text-primary-900
+    hover:bg-primary-50
+    active:bg-primary-100
+    disabled:bg-transparent
+    focus-visible:bg-primary-50
+  `,
         },
         {
           color: 'primary',
           variant: 'soft',
-          class: 'text-[#9B1B3A] bg-[#9B1B3A]/10 hover:bg-[#9B1B3A]/15 active:bg-[#9B1B3A]/15 disabled:bg-[#9B1B3A]/10 focus-visible:bg-[#9B1B3A]/15',
+          class: `
+    text-primary-900
+    bg-primary-50
+    hover:bg-primary-100
+    active:bg-primary-200
+    disabled:bg-primary-50
+    focus-visible:bg-primary-100
+  `,
         },
         {
           color: 'primary',
           variant: 'link',
-          class: 'text-[#9B1B3A] hover:text-[#7d1530] active:text-[#7d1530] disabled:text-[#9B1B3A] focus-visible:ring-2 focus-visible:ring-[#9B1B3A]',
+          class: `
+    text-primary-900
+    hover:text-primary-800
+    active:text-primary-700
+    disabled:text-primary-400
+    focus-visible:ring-2
+    focus-visible:ring-primary-900
+  `,
         },
 
         // ── NEUTRAL ──────────────────────────────────────────────────

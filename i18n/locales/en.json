@@ -3,7 +3,7 @@
     "back": "Back",
     "showPassword": "Show Password",
     "hidePassword": "Hide Password",
-    "orLoginWith": "Or login with",
+    "orLoginWith": "Or Login with",
     "loginWithGoogle": "Login with Google"
   },
 
@@ -15,7 +15,7 @@
   },
 
   "login": {
-    "title": "Login",
+    "title": "Sign in",
     "subtitle": "Log into your account",
     "emailPlaceholder": "Email Address",
     "passwordPlaceholder": "Password",

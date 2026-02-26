@@ -2,6 +2,9 @@
 import '@nuxt/image'
 
 export default defineNuxtConfig({
+  components: {
+    dirs: ['~/components']
+  },
   // Enable Nuxt devtools
   devtools: { enabled: true },
 
