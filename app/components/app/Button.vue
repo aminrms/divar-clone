@@ -37,7 +37,7 @@ const circleClass = computed(() => {
     'absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full'
 
   if (props.variant === 'solid') {
-    return `${base} bg-black/20 p-2`
+    return `${base} bg-black/30 p-1`
   }
   if (props.variant === 'outline') {
     return `${base} bg-transparent ring-1 ring-inset ring-primary-900 p-2`

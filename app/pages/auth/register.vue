@@ -8,7 +8,6 @@ definePageMeta({ layout: 'auth' })
 
 const { t } = useI18n()
 
-// ─── Schema ───────────────────────────────────────────────────────────────────
 const registerSchema = z.object({
   fullName: z.string().min(2, t('validation.fullNameMin')),
   email: z.string().email(t('validation.emailInvalid')),
@@ -20,10 +19,8 @@ const registerSchema = z.object({
 })
 type RegisterForm = z.infer<typeof registerSchema>
 
-// ─── Mutation ─────────────────────────────────────────────────────────────────
 const { mutateAsync: register, isPending: isLoading, error: registerError } = useRegister()
 
-// ─── Form ─────────────────────────────────────────────────────────────────────
 const { handleSubmit, errors, defineField } = useForm<RegisterForm>({
   validationSchema: toTypedSchema(registerSchema),
   initialValues: { fullName: '', email: '', password: '', confirmPassword: '' },
@@ -37,7 +34,6 @@ const [confirmPassword, confirmPasswordAttrs] = defineField('confirmPassword')
 const showPassword = ref(false)
 const showConfirm = ref(false)
 
-// ─── Submit ───────────────────────────────────────────────────────────────────
 const onSubmit = handleSubmit(async (values) => {
   await register({ name: values.fullName, email: values.email, password: values.password })
 })
@@ -95,7 +91,7 @@ const errorMessage = computed(() => {
               class="flex items-center justify-center w-12 h-full rounded-r-none self-stretch"
               :ui="{ base: ['rounded-xl'] }"
             >
-              <UIcon name="i-heroicons-user" class="text-white text-xl w-6 h-6" />
+              <img src="~/assets/icons/Profile.svg" class="w-4 h-4 shrink-0" alt="" />
             </UButton>
           </template>
         </UInput>
@@ -117,7 +113,7 @@ const errorMessage = computed(() => {
               class="flex items-center justify-center w-12 h-full rounded-r-none self-stretch"
               :ui="{ base: ['rounded-xl'] }"
             >
-              <UIcon name="i-heroicons-envelope" class="text-white text-xl w-6 h-6" />
+              <img src="~/assets/icons/Message.svg" class="w-4 h-4 shrink-0" alt="" />
             </UButton>
           </template>
         </UInput>
@@ -139,7 +135,7 @@ const errorMessage = computed(() => {
               class="flex items-center justify-center w-12 h-full rounded-r-none self-stretch"
               :ui="{ base: ['rounded-xl'] }"
             >
-              <UIcon name="i-lucide-lock" class="text-white text-xl w-6 h-6" />
+              <img src="~/assets/icons/lock.svg" class="w-4 h-4 shrink-0" alt="" />
             </UButton>
           </template>
           <template #trailing>
@@ -172,7 +168,7 @@ const errorMessage = computed(() => {
               class="flex items-center justify-center w-12 h-full rounded-r-none self-stretch"
               :ui="{ base: ['rounded-xl'] }"
             >
-              <UIcon name="i-lucide-lock" class="text-white text-xl w-6 h-6" />
+              <img src="~/assets/icons/lock.svg" class="w-4 h-4 shrink-0" alt="" />
             </UButton>
           </template>
           <template #trailing>
@@ -189,7 +185,8 @@ const errorMessage = computed(() => {
         </UInput>
       </UFormField>
 
-      <div class="mt-2"/>
+      <div class="mt-2" />
+
       <!-- Sign Up -->
       <AppButton
         type="submit"

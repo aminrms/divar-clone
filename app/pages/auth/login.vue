@@ -8,17 +8,14 @@ definePageMeta({ layout: 'auth' })
 
 const { t } = useI18n()
 
-// ─── Schema ───────────────────────────────────────────────────────────────────
 const schema = z.object({
   email: z.string().email(t('validation.emailInvalid')),
   password: z.string().min(8, t('validation.passwordMin')),
 })
 type LoginForm = z.infer<typeof schema>
 
-// ─── Mutation ─────────────────────────────────────────────────────────────────
 const { mutateAsync: login, isPending: isLoading, error: loginError } = useLogin()
 
-// ─── Form ─────────────────────────────────────────────────────────────────────
 const { handleSubmit, errors, defineField } = useForm<LoginForm>({
   validationSchema: toTypedSchema(schema),
   initialValues: { email: '', password: '' },
@@ -30,7 +27,6 @@ const [password, passwordAttrs] = defineField('password')
 const router = useRouter()
 const showPassword = ref(false)
 
-// ─── Submit ───────────────────────────────────────────────────────────────────
 const onSubmit = handleSubmit(async (values) => {
   await login({ email: values.email, password: values.password })
 })
@@ -88,7 +84,7 @@ const errorMessage = computed(() => {
               class="flex items-center justify-center w-12 h-full rounded-r-none self-stretch"
               :ui="{ base: ['rounded-xl'] }"
             >
-              <UIcon name="i-heroicons-envelope" class="text-white text-xl w-6 h-6" />
+              <img src="~/assets/icons/Message.svg" class="w-4 h-4 shrink-0" alt="" />
             </UButton>
           </template>
         </UInput>
@@ -110,7 +106,7 @@ const errorMessage = computed(() => {
               class="flex items-center justify-center w-12 h-full rounded-r-none self-stretch"
               :ui="{ base: ['rounded-xl'] }"
             >
-              <UIcon name="i-lucide-lock" class="text-white text-xl w-6 h-6" />
+              <img src="~/assets/icons/lock.svg" class="w-4 h-4 shrink-0" alt="" />
             </UButton>
           </template>
           <template #trailing>

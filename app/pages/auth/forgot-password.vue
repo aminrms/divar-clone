@@ -43,15 +43,13 @@ const onSubmit = handleSubmit(async (values) => {
 
     <!-- ── BACK BUTTON ────────────────────────────────── -->
     <UButton
-      color="neutral"
+      color="ghost"
       variant="ghost"
-      size="sm"
+      size="md"
       icon="i-heroicons-arrow-left"
-      class="-mt-4 self-start"
+      class="-mt-4 self-start font-bold"
       @click="router.back()"
-    >
-      {{ t('common.back') }}
-    </UButton>
+    />
 
     <!-- ── HEADING ────────────────────────────────────── -->
     <div class="text-start -mt-2">
@@ -82,14 +80,14 @@ const onSubmit = handleSubmit(async (values) => {
               class="flex items-center justify-center w-12 h-full rounded-r-none self-stretch"
               :ui="{ base: ['rounded-xl'] }"
             >
-              <UIcon name="i-heroicons-envelope" class="text-white text-xl w-6 h-6" />
+              <img src="~/assets/icons/Message.svg" class="w-4 h-4 shrink-0" alt="" />
             </UButton>
           </template>
         </UInput>
       </UFormField>
 
       <!-- 40px space before submit -->
-      <div class="mt-6" />
+      <div class="mt-1" />
 
       <!-- Send Link -->
       <AppButton

@@ -47,8 +47,8 @@
   },
 
   "verification": {
-    "title": "Verification Code",
-    "subtitle": "The verification code sent to the number",
+    "title": "Verification",
+    "subtitle": "We'ev send you the verification code on",
     "confirmButton": "Confirm",
     "resendCode": "Resend Code",
     "resendIn": "Resend in {seconds} seconds",
