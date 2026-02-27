@@ -40,7 +40,7 @@ const circleClass = computed(() => {
     return `${base} bg-black/30 p-1`
   }
   if (props.variant === 'outline') {
-    return `${base} bg-transparent ring-1 ring-inset ring-primary-900 p-2`
+    return `${base} bg-transparent ring-1 ring-inset ring-primary-900 p-1`
   }
   return base
 })
